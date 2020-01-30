@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Lista de produtos</title>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Listagem de produtos</h1>
+            <div class="row">
+                <div class=".col-6">
+                    <a class="btn btn-primary" href="/home">HOME</a>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="produto : ${produtos}">
+                        <tr>
+                            <td th:text="${produto.nome}" />
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="http://code.jquery.com/jquery.js" />
+        <script src="/bootstrap/js/bootstrap.min.js" />
+    </body>
+</html>

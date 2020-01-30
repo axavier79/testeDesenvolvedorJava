@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/usuario")
 public class UsuarioController {
     
     private UsuarioService usuarioService;
@@ -22,11 +22,11 @@ public class UsuarioController {
         this.produtoService = produtoService;
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/listarUsuarios")
     public String listar(Model model){
         model.addAttribute("usuarios", usuarioService.listarTodas());
         
-        return "/usuario/listar";
+        return "/usuario/listarUsuarios";
     }
     
     @GetMapping("{id}/editar")
@@ -41,7 +41,7 @@ public class UsuarioController {
     public String excluir(@PathVariable("id") Long id){
         usuarioService.removerPorId(id);
         
-        return "redirect:/listar";
+        return "redirect:/usuario/listarUsuarios";
     }
     
     @GetMapping("/novo")
@@ -56,12 +56,7 @@ public class UsuarioController {
     public String salvar(Usuario usuario){
         usuarioService.salvar(usuario);
         
-        return "redirect:/listar";
-    }
-    
-    @GetMapping("/home")
-    public String iniciar(){
-        return "/home";
+        return "redirect:/usuario/listarUsuarios";
     }
     
 }
