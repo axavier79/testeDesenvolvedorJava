@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Usuarios</title>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Cadastrar usuário</h1>
+
+            <form th:object="${usuario}" th:action="@{/salvar}" method="post">
+                
+                <input th:field="*{id}" type="hidden" id="id" />
+                
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nome">Nome</label>
+                        <input th:field="*{nome}"
+                            type="text" 
+                            class="form-control" 
+                            id="nome" 
+                            placeholder="Nome" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="cpf">CPF</label>
+                        <input th:field="*{cpf}"
+                            type="text" 
+                            class="form-control" 
+                            id="cpf" 
+                            placeholder="CPF" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="endereco">Endereço</label>
+                        <input th:field="*{endereco}"
+                            type="text" 
+                            class="form-control" 
+                            id="endereco" 
+                            placeholder="Endereço" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="telefone">Telefone</label>
+                        <input th:field="*{telefone}"
+                            type="text" 
+                            class="form-control" 
+                            id="telefone" 
+                            placeholder="Telefone" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="email">E-mail</label>
+                        <input th:field="*{email}"
+                            type="text" 
+                            class="form-control" 
+                            id="email" 
+                            placeholder="E-mail" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="nome">Produto</label>
+                        <select th:field="*{produto.id}"
+                            class="chosen-select form-control" 
+                            id="produto" 
+                            data-placeholder="Produto">
+                            
+                            <option 
+                                th:each="produto : ${produtos}"
+                                th:value="${produto.id}"
+                                th:text="${produto.nome}" />
+                        </select>
+                    </div>
+                </div>
+                
+                <a class="btn" href="/home">Voltar</a>
+                <button class="btn btn-success" type="submit">Salvar</button>
+            </form>
+        </div>
+
+        <script src="http://code.jquery.com/jquery.js" />
+        <script src="/bootstrap/js/bootstrap.min.js" />
+    </body>
+</html>

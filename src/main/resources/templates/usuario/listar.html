@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Lista de usuários</title>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Listagem de usuários</h1>
+            <div class="row">
+                <div class=".col-6">
+                    <a class="btn btn-primary" style="margin-bottom: 10px" href="/novo">Cadastrar novo usuário</a>
+                </div>
+                <div class=".col-6">
+                    <a class="btn btn-primary" href="/home">HOME</a>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Produto</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="usuario : ${usuarios}">
+                    <tr>
+                        <td th:text="${usuario.nome}" />
+                        <td th:text="${usuario.cpf}" />
+                        <td th:text="${usuario.endereco}" />
+                        <td th:text="${usuario.telefone}" />
+                        <td th:text="${usuario.email}" />
+                        <td th:text="${usuario.produto.nome}" />
+                        <td>
+                            <a th:href="@{${usuario.id} +'/editar'}" 
+                               href="#">Editar</a>
+                            <a th:href="@{${usuario.id} +'/excluir'}" 
+                               th:onclick="'return confirm(\'Deseja excluir esse usuário?\')'"
+                               href="#">Excluir</a>
+                        </td>
+                    </tr>
+                </th:block>
+
+                </tbody>
+            </table>
+        </div>
+
+        <script src="http://code.jquery.com/jquery.js" />
+        <script src="/bootstrap/js/bootstrap.min.js" />
+    </body>
+</html>
